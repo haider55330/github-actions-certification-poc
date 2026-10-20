@@ -1,0 +1,14 @@
+name: Module 2B - Cron Schedule
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Har raat 12 baje UTC par chalega
+  workflow_dispatch:
+
+jobs:
+  scheduled-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Execution Time
+        run: |
+          echo "Scheduled or manual run triggered at: $(date)"
