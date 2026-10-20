@@ -1,0 +1,28 @@
+name: Module 5A - Multi-Environment Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Select Deployment Environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  deploy-job:
+    name: Deploy to Environment
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_env }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Simulate Deployment
+        run: |
+          echo "Starting deployment process..."
+          echo "Successfully deployed application to environment: ${{ inputs.target_env }}"
