@@ -1,0 +1,14 @@
+name: Module 2D - Webhook Trigger
+
+on:
+  repository_dispatch:
+    types: [custom_event]
+
+jobs:
+  webhook-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process Webhook Data
+        run: |
+          echo "Webhook event received successfully!"
+          echo "Payload message: ${{ github.event.client_payload.message }}"
