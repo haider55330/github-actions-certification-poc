@@ -1,0 +1,24 @@
+name: Module 4C - Conditional Execution
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_optional_step:
+        description: 'Run Optional Step?'
+        type: boolean
+        default: true
+
+jobs:
+  conditional-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Always Runs
+        run: echo "This step always executes."
+
+      - name: Optional Step
+        if: ${{ inputs.run_optional_step == true }}
+        run: echo "Optional step executed because checkbox was TRUE!"
+
+      - name: Failure Handler Step
+        if: ${{ failure() }}
+        run: echo "This only runs if a previous step failed."
