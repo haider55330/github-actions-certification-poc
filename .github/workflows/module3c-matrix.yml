@@ -1,0 +1,16 @@
+name: Module 3C - Matrix Strategy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-job:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18, 20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Print Matrix Combination
+        run: |
+          echo "Running on OS: ${{ matrix.os }} with Node version: ${{ matrix.node-version }}"
