@@ -1,0 +1,19 @@
+name: Module 3B - Build Artifacts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Output File
+        run: |
+          mkdir build
+          echo "Build Report Generated Successfully" > build/output.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: build/output.txt
