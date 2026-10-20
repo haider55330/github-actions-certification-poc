@@ -1,0 +1,21 @@
+name: Module 2C - Manual Trigger with Inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target Environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  manual-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Selected Environment
+        run: |
+          echo "Deploying to environment: ${{ inputs.environment }}"
